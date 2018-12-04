@@ -1,16 +1,25 @@
 <template>
   <div class="TripsPage">
     <div class='TripsPage__header'>
-      <div class='filter'>
-        Filter
-      </div>
       <h2>
         My Trips
       </h2>
     </div>
     <div class='TripsPage__content'>
-      <Loading />
-      <TripList :items='items' />
+      <div v-if='loading'
+           class='TripsPage__loading'>
+        <Loading />
+      </div>
+      <div v-else-if='error'
+           class='TripsPage__error'>
+        {{ error }}
+      </div>
+      <TripList :items='items'
+                v-else-if='items.length' />
+      <div v-else
+           class='TripsPage__no-results'>
+        No Trips
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +38,7 @@ export default {
   data() {
     return {
       loading: false,
+      error: "",
       items: []
     };
   },
@@ -37,9 +47,8 @@ export default {
       this.loading = true;
       const { data } = await api.getTrips();
       this.items = data;
-      // console.log(response.data);
     } catch (e) {
-      // TODO
+      this.error = "Error fetching trips";
     } finally {
       this.loading = false;
     }
@@ -52,5 +61,16 @@ export default {
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__loading,
+  &__error,
+  &__no-results {
+    text-align: center;
+  }
 }
 </style>

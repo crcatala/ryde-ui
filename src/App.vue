@@ -2,8 +2,6 @@
   <div id="App">
     <AppHeader />
     <router-view />
-    <footer class='App__footer'>
-    </footer>
   </div>
 </template>
 
@@ -17,15 +15,3 @@ export default {
   }
 };
 </script>
-
-<style lang='scss' scoped>
-@import "@/styles/variables.scss";
-
-.App {
-  &__footer {
-    background-color: $bg-color-secondary;
-    height: 10px;
-    margin-top: 2em;
-  }
-}
-</style>
