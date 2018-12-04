@@ -7,28 +7,33 @@
       {{ pickupDate }}
     </td>
     <td>
-      hey
+      {{ driverName }}
     </td>
     <td>
-      hey
+      {{ fare }}
     </td>
     <td>
-      hey
+      {{ carType }}
     </td>
     <td>
-      hey
+      {{ city }}
     </td>
     <td>
-      hey
+      <PaymentMethod :item='item.payment_method' />
     </td>
   </tr>
 </template>
 
 <script>
 import format from "date-fns/format";
+import get from "lodash/get";
+import PaymentMethod from "@/components/PaymentMethod";
 
 export default {
   name: "TripItem",
+  components: {
+    PaymentMethod
+  },
   props: {
     item: {
       type: Object,
@@ -38,6 +43,21 @@ export default {
   computed: {
     pickupDate() {
       return format(this.item.pickup_time, "MM/DD/YY");
+    },
+    driverName() {
+      return get(this.item, "driver.name", "");
+    },
+    fare() {
+      return `$${Number(this.item.fare).toFixed(2)}`;
+    },
+    carType() {
+      return get(this.item, "car.type", "");
+    },
+    city() {
+      return this.item.city;
+    },
+    paymentType() {
+      return get(this.item, "payment_type");
     }
   }
 };
