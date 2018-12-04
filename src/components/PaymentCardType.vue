@@ -1,8 +1,20 @@
 <template>
   <div class="PaymentCardType">
-    <img :src='imageSrc'
-         v-if='imageSrc'
-         class='PaymentCardType__image'>
+    <img :src='"@/assets/images/visa.png"'
+         v-if='type === "Visa"'
+         class='PaymentCardType__image PaymentCardType__image--visa'>
+    <img src='@/assets/images/mastercard.png'
+         v-else-if='type === "Mastercard"'
+         class='PaymentCardType__image PaymentCardType__image--mastercard'>
+    <img src='@/assets/images/discover.png'
+         v-else-if='type === "Discover"'
+         class='PaymentCardType__image PaymentCardType__image--discover'>
+    <img src='@/assets/images/amex.png'
+         v-else-if='type === "AMEX"'
+         class='PaymentCardType__image PaymentCardType__image--amex'>
+    <img src='@/assets/images/unknown-card-type.png'
+         v-else
+         class='PaymentCardType__image PaymentCardType__image--unknown'>
   </div>
 </template>
 
@@ -13,22 +25,6 @@ export default {
     type: {
       type: String,
       default: ""
-    }
-  },
-  computed: {
-    imageSrc() {
-      switch (this.type) {
-        case "Visa":
-          return require("@/assets/images/visa.png");
-        case "Mastercard":
-          return require("@/assets/images/mastercard.png");
-        case "AMEX":
-          return require("@/assets/images/amex.png");
-        case "Discover":
-          return require("@/assets/images/discover.png");
-        default:
-          return require("@/assets/images/unknown-card-type.png");
-      }
     }
   }
 };
