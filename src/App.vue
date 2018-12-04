@@ -1,9 +1,31 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link> |
-      <router-link :to="{ name: 'TripsPage' }">My Trips</router-link>
-    </div>
+  <div id="App">
+    <AppHeader />
     <router-view />
+    <footer class='App__footer'>
+    </footer>
   </div>
 </template>
+
+<script>
+import AppHeader from "@/components/AppHeader";
+
+export default {
+  name: "App",
+  components: {
+    AppHeader
+  }
+};
+</script>
+
+<style lang='scss' scoped>
+@import "@/styles/variables.scss";
+
+.App {
+  &__footer {
+    background-color: $bg-color-secondary;
+    height: 10px;
+    margin-top: 2em;
+  }
+}
+</style>

@@ -9,6 +9,7 @@
       </h2>
     </div>
     <div class='TripsPage__content'>
+      <Loading />
       <TripList :items='items' />
     </div>
   </div>
@@ -17,11 +18,13 @@
 <script>
 import api from "@/api";
 import TripList from "@/components/TripList";
+import Loading from "@/components/Loading";
 
 export default {
   name: "TripsPage",
   components: {
-    TripList
+    TripList,
+    Loading
   },
   data() {
     return {
