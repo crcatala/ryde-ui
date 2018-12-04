@@ -1,35 +1,37 @@
 <template>
-  <table class="TripList">
-    <thead>
-      <tr>
-        <th class='TripList__toggle-column'>
-        </th>
-        <th class='TripList__pickup-time-column'>
-          Pickup
-        </th>
-        <th class='TripList__driver-column'>
-          Driver
-        </th>
-        <th class='TripList__fare-column'>
-          Fare
-        </th>
-        <th class='TripList__car-column'>
-          Car
-        </th>
-        <th class='TripList__city-column'>
-          City
-        </th>
-        <th class='TripList__payment-column'>
-          Payment Method
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <TripItem v-for='item in items'
-                :item='item'
-                :key='item.id' />
-    </tbody>
-  </table>
+  <div class='TripList'>
+    <table class="TripList__table">
+      <thead>
+        <tr>
+          <th class='TripList__toggle-column'>
+          </th>
+          <th class='TripList__pickup-time-column'>
+            Pickup
+          </th>
+          <th class='TripList__driver-column'>
+            Driver
+          </th>
+          <th class='TripList__fare-column'>
+            Fare
+          </th>
+          <th class='TripList__car-column'>
+            Car
+          </th>
+          <th class='TripList__city-column'>
+            City
+          </th>
+          <th class='TripList__payment-column'>
+            Payment Method
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <TripItem v-for='item in items'
+                  :item='item'
+                  :key='item.id' />
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -51,13 +53,17 @@ export default {
 
 <style lang="scss" scoped>
 .TripList {
-  width: 100%;
-  border-collapse: collapse;
+  overflow-x: auto;
 
-  th {
-    text-align: left;
-    padding: 16px 8px;
-    border-bottom: 1px solid #cccccc;
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      text-align: left;
+      padding: 16px 8px;
+      border-bottom: 1px solid #cccccc;
+    }
   }
 
   &__toggle-column {
