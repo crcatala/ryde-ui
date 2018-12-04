@@ -1,7 +1,8 @@
 <template>
   <tr class="TripItem">
     <td>
-      >
+      <img src='@/assets/images/chevron-right.png'
+           class='TripItem__toggle'>
     </td>
     <td>
       {{ pickupDate }}
@@ -65,6 +66,13 @@ export default {
 
 <style lang="scss" scoped>
 .TripItem {
-  // Styles
+  & > td {
+    padding: 16px 8px;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  &__toggle {
+    height: 10px;
+  }
 }
 </style>

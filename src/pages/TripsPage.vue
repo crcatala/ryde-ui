@@ -1,19 +1,16 @@
 <template>
   <div class="TripsPage">
-    <aside class='TripsPage__nav'>
-      Placeholder
-    </aside>
-    <main class='TripsPage__main'>
-      <div class='header'>
-        <div class='filter'>
-          Filter
-        </div>
-        <h2>
-          My Trips
-        </h2>
-        <TripList :items='items' />
+    <div class='TripsPage__header'>
+      <div class='filter'>
+        Filter
       </div>
-    </main>
+      <h2>
+        My Trips
+      </h2>
+    </div>
+    <div class='TripsPage__content'>
+      <TripList :items='items' />
+    </div>
   </div>
 </template>
 
@@ -49,14 +46,8 @@ export default {
 
 <style lang="scss" scoped>
 .TripsPage {
-  display: flex;
-
-  &__nav {
-    width: 200px;
-  }
-
-  &__main {
-    width: 100%;
-  }
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>
